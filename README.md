@@ -1,8 +1,8 @@
 # Instruções
 
-1. Primeiro procure um site confiável que contenda assuntos sobre ecologia, tendo mais prefêrencias sobre assusntos mais específcos como nome de uma planta.
-2. Com o link aberto, copie a url.
-3. Logo após, dee preferência, use a IA Gemini já que usa o google, para poder ler o que está escrito no site.
+1. Primeiro procure um site confiável que contenha assuntos sobre ecologia, tendo mais prefêrencias sobre assusntos mais específcos como nome de uma planta.
+2. Com o link aberto, copie a url (Ctrl+C).
+3. Logo após, dee preferência, use a IA Gemini já que usa o google.
 4. Com o Gemini aberto, comece dizendo o seguinte:
 
 Consegue ler o que está nesse site:"link do site"?
@@ -10,6 +10,6 @@ Consegue ler o que está nesse site:"link do site"?
 5. Se confirmar, peça esse seguinte comando:
 
 Com esse site, crie perguntas e respostas de acordo com esse arquivo.json:
-"cole o que está dentro do arquivo ecologia.json"
+"cole o que está dentro do arquivo ecologia.json com Ctrl+A, depois Ctrl+C e Ctrl+V no chat da Gemini ou apertando 2 vezes no botão esquerdo do mouse dentro do código para depois apertar com o botão direito selecionar a opção de copiar e no chat com a opção de colar"
 
-6. Depois de mostrar o resultado, copie e cole dentro do arquivo ecologia.json para implementar os conteúdos.
+6. Depois de mostrar o resultado, copie (Ctrl+C) e cole (Ctrl+V) dentro do arquivo ecologia.json, dando espaço na última linha do código, para implementar os conteúdos.
