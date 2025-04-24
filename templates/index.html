@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="icon" href="../static/imagem/ecoia.png" type="image/x-icon">
-    <script src="../script/scripts.js"></script>
     <title>EcoIA</title>
 </head>
 <body>
     <div class="container">
-        <!-- Área da parte de cima do chatbot --> 
         <header class="header-area">
             <img id="ecoia" src="../static/imagem/ecoia.png" alt="EcoIA">
         </header>
-        <!-- Área das conversas salvas --> 
+        <!--Área das conversas salvas-->
         <aside class="history-area">
             <div class="history-header">
                 <h2>Conversas</h2>
@@ -25,7 +23,7 @@
             <h3 class="recent-conversations-title">Recentes</h3>
             <div id="historyBox"></div>
         </aside>
-        <!-- Área do chatbot --> 
+        <!--Área do chatbot-->
         <main class="chat-area">
             <div class="chat-box" id="chatBox"></div>
             <div class="input-area">
@@ -38,7 +36,7 @@
             </div>
         </main>
     </div>
-    <!-- Modal para renomar conversa salva --> 
+    <!--Renomear conversa salva-->
     <div id="renameConversationModal" class="modal">
         <div class="modal-content">
             <h2 class="modal-title">Renomear esta conversa</h2>
@@ -52,16 +50,17 @@
             </div>
         </div>
     </div>
-    <!-- Modal para excluir conversa salva --> 
+    <!--Remover conversa salva-->
     <div id="deleteConfirmationModal" class="modal">
         <div class="modal-content">
             <h2 class="modal-title">Excluir bate-papo?</h2>
-            <p class="modal-message">Você não vai ver mais esta conversa aqui. Essa ação também vai excluir atividades relacionadas que você perguntou sobre ecologia</p>
+            <p class="modal-message">Você não vai ver mais esta conversa aqui. Essa ação também vai excluir atividades relacionadas a ecologia</p>
             <div class="modal-actions">
                 <button id="cancelDelete">Cancelar</button>
                 <button id="confirmDelete">Excluir</button>
             </div>
         </div>
     </div>
+    <script src="../static/script/scripts.js"></script>
 </body>
 </html>
