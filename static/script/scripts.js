@@ -5,6 +5,7 @@
             loadConversationHistory();
         });
         
+        //Função de carregar conversa salva
         function loadConversationHistory() {
             fetch('/api/history')
                 .then(res => res.json())
@@ -14,6 +15,7 @@
                 });
         }
         
+        //Salvar a conversa 
         function addConversationToHistory(conversation) {
             const div = document.createElement('div');
             div.classList.add('conversation-item');
@@ -29,6 +31,7 @@
                 div.classList.add('selected');
             };
         
+            //Botão de adicionar conversa
             const optionsButton = document.createElement('button');
             optionsButton.innerHTML = '&#8942;';
             optionsButton.className = 'options-btn';
@@ -37,10 +40,12 @@
                 toggleOptions(conversation.id, optionsButton);
             };
         
+            //Botão de opções
             const optionsMenu = document.createElement('div');
             optionsMenu.className = 'options-menu';
             optionsMenu.dataset.conversationId = conversation.id;
         
+            //Botão de renomear a convesa
             const renameOption = document.createElement('button');
         renameOption.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
@@ -50,6 +55,7 @@
         renameOption.onclick = () => showRenameModal(conversation.id, conversation.title);
         renameOption.classList.add('option-item');
         
+        //Botão de renomear a convesa
         const deleteOption = document.createElement('button');
         deleteOption.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
@@ -90,12 +96,14 @@
             }
         });
         
+        //Iniciar uma conversa
         function startNewConversation() {
             currentChatId = null;
             document.getElementById('chatBox').innerHTML = '';
             appendMessage("Olá meu caro usuário! Eu sou o EcoIA, a IA que te auxiliará em assuntos sobre ecologia. Qual é a sua dúvida?", 'bot-message');
         }
         
+        //Renomar conversa salva
         function showRenameModal(id, currentTitle) {
             const modal = document.getElementById('renameConversationModal');
             const titleInput = document.getElementById('newConversationTitle');
@@ -140,6 +148,7 @@
             }).then(loadConversationHistory);
         }
         
+        //Remover conversa salva
         function deleteConversation(id) {
             const modal = document.getElementById('deleteConfirmationModal');
             const confirmButton = document.getElementById('confirmDelete');
@@ -148,7 +157,7 @@
             const modalMessage = modal.querySelector('.modal-message');
         
             modalTitle.textContent = 'Excluir bate-papo?';
-            modalMessage.textContent = 'Você não vai ver mais esta conversa aqui e não será recuperada!';
+            modalMessage.textContent = 'Você não vai ver mais esta conversa aqui. Essa ação também vai excluir atividades relacionadas a ecologia';
         
             modal.style.display = "block";
         
@@ -174,6 +183,7 @@
             };
         }
         
+        //Carregar área do chatbot
         function loadChatForConversation(conversationId) {
             const chatBox = document.getElementById('chatBox');
             chatBox.innerHTML = '';
@@ -187,6 +197,7 @@
                 });
         }
         
+        //Função de mandar mensagem como usuário
         function sendMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
@@ -210,6 +221,7 @@
                 });
         }
         
+        //Função de receber mensagem como bot
         function appendMessage(text, className) {
             const chatBox = document.getElementById('chatBox');
             const msgDiv = document.createElement('div');
