@@ -45,7 +45,7 @@
             optionsMenu.className = 'options-menu';
             optionsMenu.dataset.conversationId = conversation.id;
         
-            //Botão de renomear a convesa
+            //Botão de renomear a convesa salva
             const renameOption = document.createElement('button');
         renameOption.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
@@ -55,7 +55,7 @@
         renameOption.onclick = () => showRenameModal(conversation.id, conversation.title);
         renameOption.classList.add('option-item');
         
-        //Botão de renomear a convesa
+        //Botão de remover a convesa salva
         const deleteOption = document.createElement('button');
         deleteOption.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
