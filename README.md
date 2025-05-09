@@ -5,12 +5,12 @@ Para funcionar o chatbot, precisa rodar o main.py. Mas antes disso, precisa baix
 ![image](https://github.com/user-attachments/assets/27569e8b-1ac0-4e7a-b600-ad85890bafc4)
 E depois em Novo Terminal
 ![image](https://github.com/user-attachments/assets/c76451a6-8252-4808-91ad-cd31fe61fe9b)
-4.  Ambiente Virtual: para criar use o código: py -3.12 -m venv EcoIA
-5. Se no terminal do VS Code não estiver o (EcoIA) antes de um link onde está o projeto
+3.  Ambiente Virtual: para criar use o código: py -3.12 -m venv EcoIA
+4. Se no terminal do VS Code não estiver o (EcoIA) antes de um link onde está o projeto
 ![image](https://github.com/user-attachments/assets/64667b8a-891e-4f9c-a377-1f481c45ea4b)
 ative usando esse comando: .\EcoIA\Scripts\activate
-6. E para reconhecer essas bibliotecas do main.py que vai estar com uma linha amarela em baixo
-![image](https://github.com/user-attachments/assets/4c9fe51d-0ec6-4c82-8e90-a0ef6c904661)
+5. E para reconhecer essas bibliotecas do main.py que vai estar com uma linha amarela em baixo
+![image](https://github.com/user-attachments/assets/4c9fe51d-0ec6-4c82-8e90-a0ef6c904661) <br>
 Use o código no terminal: pip install flask chatterbot sqlalchemy
-7. Depois é só rodar e dará este link para acessar: http://127.0.0.1:5000
-8. Também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.
+6. Depois é só rodar e dará este link para acessar: http://127.0.0.1:5000
+7. Também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.
