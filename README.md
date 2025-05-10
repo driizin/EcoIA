@@ -22,10 +22,15 @@ ative usando esse comando: .\EcoIA\Scripts\activate
 5. E para reconhecer essas bibliotecas do main.py que vai estar com uma linha amarela em baixo
 ![image](https://github.com/user-attachments/assets/4c9fe51d-0ec6-4c82-8e90-a0ef6c904661) <br>
 Use o código no terminal: pip install flask chatterbot sqlalchemy
-6. Depois é só rodar apertando no sinal de play
+6. Verifique se está rodando na veersão do Python 3.12 na parte inferior direito do VS Code
+![image](https://github.com/user-attachments/assets/f20aa7ae-2743-4363-b120-db727df2577b)
+Caso não estiver, aperte nele e vai aparecer as versões do python instalados
+![image](https://github.com/user-attachments/assets/e6c3e9ae-e026-47d5-a5c5-4f691a7ccefd)<br>
+E selecione esse Python 3.12.0('EcoIA':venv)
+8. Depois é só rodar apertando no sinal de play
 ![image](https://github.com/user-attachments/assets/1142e0ab-cdba-470d-b59b-62154bd3d1e8)
 e dará este link para acessar: http://127.0.0.1:5000
-7. Aproveite e teste o nosso chatbot EcoIA e também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.<br>
+9. Aproveite e teste o nosso chatbot EcoIA e também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.<br>
 <br><br><br>![user-campaign-reward-desc_15-20190620_20054103](https://github.com/user-attachments/assets/39459ec7-5425-41df-9464-6584424d2a4e)
 
    
