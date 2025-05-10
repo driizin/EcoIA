@@ -22,5 +22,10 @@ ative usando esse comando: .\EcoIA\Scripts\activate
 5. E para reconhecer essas bibliotecas do main.py que vai estar com uma linha amarela em baixo
 ![image](https://github.com/user-attachments/assets/4c9fe51d-0ec6-4c82-8e90-a0ef6c904661) <br>
 Use o código no terminal: pip install flask chatterbot sqlalchemy
-6. Depois é só rodar e dará este link para acessar: http://127.0.0.1:5000
-7. Também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.
+6. Depois é só rodar aperando no sinal de play
+![image](https://github.com/user-attachments/assets/1142e0ab-cdba-470d-b59b-62154bd3d1e8)
+e dará este link para acessar: http://127.0.0.1:5000
+7. Aproveite e teste o nosso chatbot EcoIA e também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.<br>
+<br><br><br>![user-campaign-reward-desc_15-20190620_20054103](https://github.com/user-attachments/assets/39459ec7-5425-41df-9464-6584424d2a4e)
+
+   
