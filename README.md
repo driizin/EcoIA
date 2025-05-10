@@ -1,5 +1,5 @@
 # EcoIA
-Olá! Este é um projeto de um chatbot da ecologia por nome EcoIA que foi desenvolvido por alunos do IF Baiano - Campus Guanambi.<br>
+Olá! Este é um projeto de um chatbot da ecologia por nome EcoIA que foi desenvolvido pelos alunos do IF Baiano - Campus Guanambi.<br>
 São eles: 
 
 |                                                                                                |                                                                                                |                                                                                                |
