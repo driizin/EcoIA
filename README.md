@@ -15,7 +15,7 @@ E com o botão direito, vai em Mostrar mais opções e logo após, Abrir com Cod
 ![image](https://github.com/user-attachments/assets/27569e8b-1ac0-4e7a-b600-ad85890bafc4)
 E depois em Novo Terminal
 ![image](https://github.com/user-attachments/assets/c76451a6-8252-4808-91ad-cd31fe61fe9b)
-3. Ambiente Virtual: para criar use o código: py -3.12 -m venv EcoIA
+3. Para criar o ambiente virtual, use o código: py -3.12 -m venv EcoIA
 4. Se no terminal do VS Code não estiver o (EcoIA) antes de um link onde está o projeto
 ![image](https://github.com/user-attachments/assets/64667b8a-891e-4f9c-a377-1f481c45ea4b)
 ative usando esse comando: .\EcoIA\Scripts\activate
