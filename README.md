@@ -50,7 +50,7 @@ python -m spacy download pt_core_news_sm <br>
 python -m spacy download en_core_web_sm
 9. Para funcionar, precisa criar o banco de dados. Então com o Xampp aberto<br>
 ![image](https://github.com/user-attachments/assets/ba04212d-18c2-450e-b7b9-505ba6b9ca67)<br>
-Aperte o botão Stay do mysql para que o server dele funcione, como na imagem:<br>
+Aperte o botão Start do mysql para que o server dele funcione, como na imagem:<br>
 ![image](https://github.com/user-attachments/assets/66e2e501-3b38-49ad-982b-fbd4f8fb1f64)<br>
 Logo após, na pasta do chatbot, dentro dela procure a pasta sgbd
 ![image](https://github.com/user-attachments/assets/3813ce80-16f7-4950-af6f-e63f2badebc2)<br>
