@@ -1,66 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="icon" href="../static/imagem/ecoia.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" href="../static/imagem/ecoia.png" type="image/x-icon" />
     <title>EcoIA</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header class="header-area">
-            <img id="ecoia" src="../static/imagem/ecoia.png" alt="EcoIA">
-        </header>
-        <!--Área das conversas salvas-->
-        <aside class="history-area">
-            <div class="history-header">
-                <h2>Conversas</h2>
-                <button class="new-convo-btn" onclick="startNewConversation()">
-                    <span style="font-size: 2em; margin-right: 5px; color: #333;">+</span> Nova conversa
-                </button>
-            </div>
-            <h3 class="recent-conversations-title">Recentes</h3>
-            <div id="historyBox"></div>
-        </aside>
-        <!--Área do chatbot-->
-        <main class="chat-area">
-            <div class="chat-box" id="chatBox"></div>
-            <div class="input-area">
-                <input type="text" id="userInput" placeholder="Peça ao EcoIA">
-                <button onclick="sendMessage()">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M3.4 20.4L22 12 3.4 3.6 6.4 12 3.4 20.4Z"/>
-                    </svg>
-                </button>
-            </div>
-        </main>
+      <header class="header-area">
+        <img id="ecoia" src="../static/imagem/ecoia.png" alt="EcoIA" />
+      </header>
+      <aside class="history-area">
+        <div class="history-header">
+          <h2>Conversas</h2>
+          <button class="new-convo-btn" onclick="startNewConversation()">
+            <span style="font-size: 2em; margin-right: 5px; color: #333"
+              >+</span
+            >
+            Nova conversa
+          </button>
+        </div>
+        <h3 class="recent-conversations-title">Recentes</h3>
+        <div id="historyBox"></div>
+      </aside>
+      <main class="chat-area">
+        <div class="chat-box" id="chatBox"></div>
+        <div class="input-area">
+          <label for="imageInput" class="image-upload-icon">📎</label>
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            style="display: none"
+          />
+          <div id="imagePreviewContainer"></div>
+          <input type="text" id="userInput" placeholder="Peça ao EcoIA" />
+          <button onclick="sendMessage()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M3.4 20.4L22 12 3.4 3.6 6.4 12 3.4 20.4Z" />
+            </svg>
+          </button>
+        </div>
+      </main>
     </div>
-    <!--Renomear conversa salva-->
     <div id="renameConversationModal" class="modal">
-        <div class="modal-content">
-            <h2 class="modal-title">Renomear esta conversa</h2>
-            <div class="modal-input-area">
-                <label for="newConversationTitle">Novo título:</label>
-                <input type="text" id="newConversationTitle">
-            </div>
-            <div class="modal-actions">
-                <button id="cancelRename">Cancelar</button>
-                <button id="confirmRename">Renomear</button>
-            </div>
+      <div class="modal-content">
+        <h2 class="modal-title">Renomear esta conversa</h2>
+        <div class="modal-input-area">
+          <label for="newConversationTitle">Novo título:</label>
+          <input type="text" id="newConversationTitle" />
         </div>
+        <div class="modal-actions">
+          <button id="cancelRename">Cancelar</button>
+          <button id="confirmRename">Renomear</button>
+        </div>
+      </div>
     </div>
-    <!--Remover conversa salva-->
     <div id="deleteConfirmationModal" class="modal">
-        <div class="modal-content">
-            <h2 class="modal-title">Excluir bate-papo?</h2>
-            <p class="modal-message">Você não vai ver mais esta conversa aqui. Essa ação também vai excluir atividades relacionadas a ecologia</p>
-            <div class="modal-actions">
-                <button id="cancelDelete">Cancelar</button>
-                <button id="confirmDelete">Excluir</button>
-            </div>
+      <div class="modal-content">
+        <h2 class="modal-title">Excluir bate-papo?</h2>
+        <p class="modal-message">
+          Você não vai ver mais esta conversa aqui. Essa ação também vai excluir
+          atividades relacionadas a ecologia
+        </p>
+        <div class="modal-actions">
+          <button id="cancelDelete">Cancelar</button>
+          <button id="confirmDelete">Excluir</button>
         </div>
+      </div>
     </div>
     <script src="../static/script/scripts.js"></script>
-</body>
+  </body>
 </html>
