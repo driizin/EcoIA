@@ -6,7 +6,7 @@ São eles:
 | :---------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
 | <a href="https://www.instagram.com/wrttdriel/"><img src="https://github.com/user-attachments/assets/45e6c560-ff1b-4bd7-9ea0-2ec6b8cfc48a" width="150" height="150"></a><br>Adriel Lima | <a href="https://www.instagram.com/luyzx_05/"><img src="https://github.com/user-attachments/assets/2492ec2f-3dd4-4b91-aede-0c1dbc602695" width="150" height="150"></a><br>Luiz Eduardo Lopes | <a href="https://www.instagram.com/wtfvinaa/"><img src="https://github.com/user-attachments/assets/ed14cfb8-6721-43e9-a474-da1c94e16ee5" width="150" height="150"></a><br>Vinícius Morais |
 # Instruções
-Para funcionar o chatbot, precisa rodar o arquivo main.py. Mas antes disso, precisa baixar o [Python 3.12](https://www.python.org/downloads/release/python-3120/), o [VS Code](https://code.visualstudio.com/download), o [Xampp](https://www.apachefriends.org/pt_br/download.html), o [MySQL Workbench 8.0 CE](https://dev.mysql.com/downloads/workbench/) e criar o ambiente virtual dentro da pasta que foi instalada esse arquivos do GitHub. E por recomendação, renomeie a pasta para o nome chatbot.
+Para funcionar o chatbot, precisa rodar o arquivo main.py. Mas antes disso, precisa baixar o [Python 3.12](https://www.python.org/downloads/release/python-3120/), o [VS Code](https://code.visualstudio.com/download), o [Xampp](https://www.apachefriends.org/pt_br/download.html), o [MySQL Workbench 8.0 CE](https://dev.mysql.com/downloads/workbench/), ter o [API key do Google](https://aistudio.google.com/apikey) e criar o ambiente virtual dentro da pasta que foi instalada esse arquivos do GitHub. E por recomendação, renomeie a pasta para o nome chatbot.
 1. Para abrir e rodar projeto, selecione a pasta
 ![image](https://github.com/user-attachments/assets/637e19b7-95ef-4f4e-9f2f-cf1bfa7040f7)<br>
 E com o botão direito, vai em Mostrar mais opções e logo após, Abrir com Code
@@ -61,6 +61,21 @@ Dentro dela, execute o arquivo com o símbolo do raiozinho que está destacado e
 ![image](https://github.com/user-attachments/assets/edad63cc-f7eb-41aa-b153-93f0e6aef44b)<br>
 e vai funcionar olhando no Output, no lado inferior mostrando antes com uns símbolos verdes:
 ![image](https://github.com/user-attachments/assets/f04a2976-5111-4aed-91a8-aa029ef5dd52)
+9. Depois pegue sua API key no site e aperte no botão Criar chave de API
+![image](https://github.com/user-attachments/assets/890ec6fd-e582-4e34-b196-7befa2c661d7)<br>
+Vai no Pesquisar projetos do Google Cloud e selecione o Gemini API:
+![image](https://github.com/user-attachments/assets/5e34cc08-1935-427e-9c6c-872003091238)<br>
+A chave de API aparecerá em baixo com opção de copiar.<br>
+Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br>
+Com a chave copiada, pesquise no Windows por Variáveis de Ambiente
+![image](https://github.com/user-attachments/assets/04f78028-5b99-4f53-90eb-c8c3cc9470c0)
+Depois de abrir, selecione Variáveis de Ambiente
+![image](https://github.com/user-attachments/assets/193d2545-f4ad-421e-9823-77ab66222ea5)
+Nos Variáveis de usuário para (user) e Variáveis do sistema, aperte no botão Novo
+![image](https://github.com/user-attachments/assets/d56145d2-a561-4548-b96a-a974c98e23b9)<br>
+No Nome da variável coloque: GOOGLE_GEMINI_API_KEY <br>
+E no Valor da variável coloque: "sua chave de API" <br>
+Logo após reinicie o computador para salvar essas variáveis.
 9. Depois é só rodar apertando no sinal de play
 ![image](https://github.com/user-attachments/assets/1142e0ab-cdba-470d-b59b-62154bd3d1e8)<br>
 e dará este link para acessar: http://127.0.0.1:5000
