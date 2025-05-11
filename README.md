@@ -54,7 +54,7 @@ Aperte o botão Start do mysql para que o server dele funcione, como na imagem:<
 ![image](https://github.com/user-attachments/assets/66e2e501-3b38-49ad-982b-fbd4f8fb1f64)<br>
 Logo após, na pasta do chatbot, dentro dela procure a pasta sgbd
 ![image](https://github.com/user-attachments/assets/3813ce80-16f7-4950-af6f-e63f2badebc2)<br>
-Dentro dessa pasta abra o arquivo chatbot.sql com o MySQL:
+Dentro dessa pasta abra o arquivo chatbot.sql com o MySQL Workbench:
 ![image](https://github.com/user-attachments/assets/72d4d829-8bcd-4c6d-b27e-f66834003d75)<br>
 ![image](https://github.com/user-attachments/assets/ff19ea6a-e38f-4ccc-9e86-0ea85a75ac90)<br>
 Dentro dela, execute o arquivo com o símbolo do raiozinho que está destacado em um quadrado azul:
