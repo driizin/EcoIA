@@ -69,9 +69,9 @@ A chave de API aparecerá em baixo com opção de copiar.<br>
 Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br>
 Com a chave copiada, pesquise no Windows por Variáveis de Ambiente
 ![image](https://github.com/user-attachments/assets/04f78028-5b99-4f53-90eb-c8c3cc9470c0)
-Depois de abrir, selecione Variáveis de Ambiente
-![image](https://github.com/user-attachments/assets/193d2545-f4ad-421e-9823-77ab66222ea5)
-Nos Variáveis de usuário para (user) e Variáveis do sistema, aperte no botão Novo
+Abra ela e depois de abrir, selecione Variáveis de Ambiente<br>
+![image](https://github.com/user-attachments/assets/193d2545-f4ad-421e-9823-77ab66222ea5)<br>
+Nas Variáveis de usuário para (user) e Variáveis do sistema, aperte no botão Novo
 ![image](https://github.com/user-attachments/assets/d56145d2-a561-4548-b96a-a974c98e23b9)<br>
 No Nome da variável coloque: GOOGLE_GEMINI_API_KEY <br>
 E no Valor da variável coloque: "sua chave de API" <br>
