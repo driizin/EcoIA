@@ -44,6 +44,8 @@ Use esses códigos em sequência no terminal:<br>
 pip install flask <br>
 pip install chatterbot <br>
 pip install google.generativeai <br>
+pip install markdown<br>
+pip install bleach<br>
 pip install mysql <br>
 pip install mysql-connector-python <br>
 python -m spacy download pt_core_news_sm <br>
