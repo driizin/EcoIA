@@ -7,7 +7,7 @@ body {
 }
 
 body {
-  background-image: url(../imagem/fundo.jpg);
+  background-color: rgb(226, 239, 234);
   background-size: cover;
   background-repeat: no-repeat;
   color: #eee;
@@ -20,10 +20,10 @@ body {
 /* Container principal */
 .container {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: auto 75%;
   grid-template-rows: 10% 90% 0%;
   grid-template-areas:
-    "history header"
+    "header header"
     "history chat"
     "history input";
   width: 100%;
@@ -32,46 +32,55 @@ body {
   max-height: none;
   border-radius: 0;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Área do cabeçalho */
 .header-area {
   grid-area: header;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(188, 210, 201);
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .header-area img#ecoia {
   width: auto;
-  max-width: 100px;
+  max-width: 150px;
   height: auto;
 }
 
 /* Área do histórico de conversas */
 .history-area {
-  border: 1px solid rgb(128, 128, 128);
+  /*border: 1px solid rgb(128, 128, 128);*/
   grid-area: history;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(188, 210, 201);
   padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   color: #333;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden;
+  width: 300px;
 }
 
 .history-area-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .history-area-header h2 {
   color: rgb(105, 105, 105);
-  margin: 0;
+  margin-top: 80px;
 }
 
 .history-area-header button {
@@ -82,6 +91,115 @@ body {
   padding: 4px 8px;
   cursor: pointer;
   font-size: 0.9em;
+}
+
+/* Estilos para o botão de alternar o menu */
+#toggleMenuBtn {
+  z-index: 10; 
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+#toggleMenuBtn:hover {
+  color: rgb(15, 50, 20);
+}
+
+/* Estilos para a área do histórico (menu lateral) */
+.history-area {
+  width: 300px; /* Largura inicial do menu aberto */
+  transition: width 0.3s ease-in-out; /* Transição suave para abrir/fechar */
+  overflow-x: hidden; /* Evita barra de rolagem horizontal quando fechado */
+}
+
+/* Estilo para o menu fechado */
+.history-area.closed {
+  width: 25px;
+}
+
+/* Esconde o título "Conversas" e o texto do botão "Nova Conversa" quando o menu está fechado */
+.history-area.closed .history-title,
+.history-area.closed .new-convo-btn span {
+  display: none !important;
+}
+
+/* Ajusta a largura do botão "Nova Conversa" quando o texto está escondido */
+.history-area.closed .new-convo-btn {
+  width: auto; /* Ajusta a largura ao ícone */
+  padding: 5px; /* Reduz o padding para caber o ícone */
+  justify-content: center; /* Centraliza o ícone */
+}
+
+/* Ajusta o posicionamento do botão de alternar quando o menu está fechado (opcional) */
+.history-area.closed #toggleMenuBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* Outros estilos do botão de alternar */
+}
+
+/* Garante que o botão de nova conversa fique visível */
+.history-area.closed .new-convo-icon span {
+  display: inline-block !important; /* Garante que o span seja exibido */
+  font-size: 2em !important; /* Mantém o tamanho do ícone */
+  color: #333 !important; /* Mantém a cor do ícone */
+  margin-right: 0 !important; /* Remove a margem para centralizar */
+}
+
+/* Esconde a div que envolve o texto quando o menu está fechado */
+.history-area.closed .new-convo-text {
+  display: none !important;
+}
+
+/* Ajusta o botão quando o texto está escondido */
+.history-area.closed .new-convo-btn {
+  width: auto; /* Ajusta a largura ao ícone */
+  padding: 3px; /* Mantém algum padding */
+  justify-content: center; /* Centraliza o ícone */
+}
+
+/* Esconde o texto "Mostrar mais conversas" também */
+.history-area.closed .show-more-btn {
+  display: none !important;
+}
+
+.history-area.closed #historyBox {
+  display: none !important;
+}
+
+.history-area.closed .recent-conversations-title {
+  display: none !important;
+}
+
+/* Estilos para o conteúdo dentro da área do histórico (para evitar que sumam ao fechar) */
+.history-area > * {
+  min-width: 300px; /* Garante que o conteúdo não quebre quando o menu está aberto */
+}
+
+/* Opcional: Estilos para o botão "Mostrar mais conversas" */
+.show-more-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  background-color: rgb(188, 210, 201);
+  color: rgb(105, 105, 105);
+  text-align: left;
+  font-weight: bold;
+}
+
+.show-more-btn:hover {
+  background-color: #ddd;
+  color: rgb(15, 50, 20);
 }
 
 .recent-conversations-title {
@@ -98,7 +216,7 @@ body {
   margin-bottom: 5px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(188, 210, 201);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,6 +227,8 @@ body {
 
 .conversation-item:hover {
   background-color: #ddd;
+  color: rgb(15, 50, 20);
+  font-weight: bolder;
 }
 
 .conversation-title {
@@ -188,10 +308,14 @@ body {
   padding: 5px 10px;
   border-radius: 5px;
   transition: background 0.2s ease;
+  margin-top: 40px;
+  gap: 5px;
 }
 
 .new-convo-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
+  color: rgb(15, 50, 20);
+  font-size: 14px;
 }
 
 /* Área do chat */
@@ -200,7 +324,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .chat-area .chat-box {
@@ -209,6 +332,7 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  margin-right: 40px;
 }
 
 /* Estilos para as mensagens */
@@ -269,7 +393,7 @@ body {
   margin-top: 5px; /* Espaço entre o texto e a imagem */
   border-radius: 5px; /* Opcional: bordas arredondadas */
   overflow: hidden; /* Garante que a borda arredondada funcione */
-  max-width: 100%; /* Garante que não exceda a largura da mensagem */
+  max-width: 50%; /* Garante que não exceda a largura da mensagem */
   height: auto;
 }
 
@@ -340,12 +464,12 @@ body {
 
 .bot_message h1,
 .message.bot_message h1 {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .bot_message h2,
 .message.bot_message h2 {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* Área de input */
@@ -353,29 +477,40 @@ body {
   margin: 10px;
   grid-area: input;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px;
   border: 1px solid rgb(128, 128, 128);
   border-radius: 15px;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(238, 236, 236);
   position: relative;
+  min-height: 100px;
+  margin-right: 40px;
 }
 
-.input-area input[type="text"] {
+.input-area #userInput {
   flex-grow: 1;
-  padding: 10px;
+  resize: none; /* Evita redimensionamento manual com o mouse */
+  height: 100%;
+  overflow-y: auto; /* Scroll vertical automático */
+  padding-top: 70px;
+  padding-left: 50px;
   border: none;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(238, 236, 236);
   color: black;
   margin-right: 10px;
   outline: none;
-  padding-left: 100px;
+  white-space: pre-wrap; /* Quebra de linha como bloco de notas */
+  word-break: break-word;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.4;
 }
 
 .input-area button {
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(238, 236, 236);
   color: rgb(15, 50, 20);
-  padding: 8px;
+  padding-top: 70px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -397,9 +532,9 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.5em;
-  color: #333;
+   color: rgb(15, 50, 20);
   cursor: pointer;
-  padding: 5px;
+  padding-top: 25px;
   z-index: 1; /* Garante que o ícone esteja acima do input */
 }
 
@@ -411,15 +546,30 @@ body {
 .input-area #imagePreviewContainer {
   position: absolute;
   left: 50px; /* Espaço para o ícone */
-  top: 5px;
+  top: -70px;
   bottom: 5px;
-  width: 50px;
+  width: 60px;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
   z-index: 1;
+  gap: 5px;
+}
+
+.input-area #imagePreviewContainer div .remove-image-button {
+    position: absolute;
+    top: 5px; /* Ajuste conforme necessário */
+    right: 5px; /* Ajuste conforme necessário */
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(34, 34, 34);
+    width: 15px; /* Ajuste o tamanho do botão */
+    height: 15px; /* Ajuste o tamanho do botão */
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-area #imagePreviewContainer img {
@@ -431,17 +581,20 @@ body {
 
 /* Scrollbars */
 .chat-area .chat-box::-webkit-scrollbar,
-.history-area::-webkit-scrollbar {
+.history-area::-webkit-scrollbar,
+#userInput::-webkit-scrollbar {
   width: 8px;
 }
 
 .chat-area .chat-box::-webkit-scrollbar-track,
-.history-area::-webkit-scrollbar-track {
+.history-area::-webkit-scrollbar-track,
+#userInput::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
 .chat-area .chat-box::-webkit-scrollbar-thumb,
-.history-area::-webkit-scrollbar-thumb {
+.history-area::-webkit-scrollbar-thumb,
+#userInput::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 4px;
 }
