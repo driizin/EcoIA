@@ -1,10 +1,82 @@
 let currentChatId = null;
+let toggleMenuBtn;
+let historyArea;
+let base64ImageFromPaste = null;
+
 
 document.addEventListener("DOMContentLoaded", () => {
   appendMessage(
     "Olá meu caro usuário! Eu sou o EcoIA, a IA que te auxiliará em assuntos sobre ecologia. Qual é a sua dúvida?",
     "bot_message"
   );
+
+  let isMenuFixed = false;
+  let isHoveringMenu = false;
+  let timeoutId;
+  let menuOpen = false;
+
+  toggleMenuBtn = document.getElementById("toggleMenuBtn");
+  historyArea = document.getElementById("historyArea");
+
+  function updateMenuButtonTooltip() {
+    if (menuOpen) {
+      if (isMenuFixed) {
+        toggleMenuBtn.title = "Fechar menu";
+      } else {
+        toggleMenuBtn.title = "Manter menu aberto";
+      }
+    } else {
+      toggleMenuBtn.title = "Abrir menu";
+    }
+  }
+
+  toggleMenuBtn.addEventListener("mouseenter", () => {
+    updateMenuButtonTooltip();
+  });
+
+  function openMenu() {
+    if (!menuOpen) {
+      historyArea.classList.remove("closed");
+      menuOpen = true;
+      updateMenuButtonTooltip();
+    }
+  }
+
+  function closeMenu() {
+    if (menuOpen) {
+      historyArea.classList.add("closed");
+      menuOpen = false;
+      updateMenuButtonTooltip();
+    }
+  }
+
+  toggleMenuBtn.addEventListener("click", () => {
+    if (isMenuFixed) {
+      isMenuFixed = false;
+      closeMenu();
+    } else {
+      isMenuFixed = true;
+      openMenu();
+    }
+  });
+
+  historyArea.addEventListener("mouseenter", () => {
+    isHoveringMenu = true;
+    if (!isMenuFixed) {
+      clearTimeout(timeoutId);
+      openMenu();
+    }
+  });
+
+  historyArea.addEventListener("mouseleave", () => {
+    isHoveringMenu = false;
+    if (!isMenuFixed) {
+      timeoutId = setTimeout(closeMenu, 200);
+    }
+  });
+
+  updateMenuButtonTooltip();
+  closeMenu();
   loadConversationHistory();
 
   const imageInput = document.getElementById("imageInput");
@@ -39,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         reader.onload = (e) => {
           const base64 = e.target.result;
 
-          // Mostra a prévia
+          // Mostra a prévia com botão de exclusão (usando canvas)
           const img = new Image();
           img.onload = () => {
             const canvas = document.createElement("canvas");
@@ -47,14 +119,53 @@ document.addEventListener("DOMContentLoaded", () => {
             canvas.height = img.height;
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0);
-            imagePreviewContainer.innerHTML = `<img src="${canvas.toDataURL(
-              "image/png"
-            )}" alt="Prévia da imagem">`;
-          };
-          img.src = base64; // Use a string base64 do FileReader para a imagem de prévia
+            const imageUrl = canvas.toDataURL("image/png");
 
-          // Armazene a string base64 para enviar
-          base64ImageFromPaste = base64;
+            const previewDiv = document.createElement("div");
+            previewDiv.style.position = "relative";
+            previewDiv.style.display = "inline-block";
+            previewDiv.style.marginRight = "5px";
+
+            const previewImg = document.createElement("img");
+            previewImg.src = imageUrl;
+            previewImg.alt = "Prévia da imagem";
+            previewImg.style.maxWidth = "70px";
+            previewImg.style.height = "auto";
+
+            const removeButton = document.createElement("button");
+            removeButton.classList.add("remove-image-button");
+            removeButton.innerHTML = `
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                  width="16pt" height="16pt" viewBox="0 0 559.000000 447.000000"
+                  preserveAspectRatio="xMidYMid meet" fill="currentColor">
+              <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
+              fill="currentColor" stroke="none">
+              <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
+              -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
+              -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
+              <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
+              -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
+              -133 8z"/>
+              <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
+              82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
+              -222 -222z"/>
+              </g>
+              </svg>
+            `;
+            removeButton.onclick = function () {
+              previewDiv.remove();
+              base64ImageFromPaste = null; // Limpa corretamente ao remover
+            };
+
+            previewDiv.appendChild(previewImg);
+            previewDiv.appendChild(removeButton);
+            imagePreviewContainer.innerHTML = '';
+            imagePreviewContainer.appendChild(previewDiv);
+
+            // Armazene a string base64 para enviar (a do canvas)
+            base64ImageFromPaste = imageUrl;
+          };
+          img.src = base64;
         };
         reader.readAsDataURL(blob);
 
@@ -68,7 +179,47 @@ document.addEventListener("DOMContentLoaded", () => {
 function displayImagePreview(file) {
   const reader = new FileReader();
   reader.onload = (e) => {
-    imagePreviewContainer.innerHTML = `<img src="${e.target.result}" alt="Prévia da imagem">`;
+    const imageUrl = e.target.result;
+    const previewDiv = document.createElement("div");
+    previewDiv.style.position = "relative";
+    previewDiv.style.display = "inline-block";
+    previewDiv.style.marginRight = "5px"; // Adiciona um pequeno espaço entre as imagens
+
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.alt = "Prévia da imagem";
+    img.style.maxWidth = "50px"; // Ajuste o tamanho máximo da prévia conforme necessário
+    img.style.height = "auto";
+
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("remove-image-button");
+    removeButton.innerHTML = `
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+        width="16pt" height="16pt" viewBox="0 0 559.000000 447.000000"
+        preserveAspectRatio="xMidYMid meet" fill="currentColor">
+    <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
+    fill="currentColor" stroke="none">
+    <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
+    -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
+    -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
+    <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
+    -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
+    -133 8z"/>
+    <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
+    82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
+    -222 -222z"/>
+    </g>
+    </svg>
+`;
+    removeButton.onclick = function () {
+      previewDiv.remove();
+      document.getElementById("imageInput").value = "";
+      base64ImageFromPaste = null;
+    };
+
+    previewDiv.appendChild(img);
+    previewDiv.appendChild(removeButton);
+    imagePreviewContainer.appendChild(previewDiv);
   };
   reader.readAsDataURL(file);
 }
@@ -78,8 +229,43 @@ function loadConversationHistory() {
   fetch("/api/history")
     .then((res) => res.json())
     .then((history) => {
-      document.getElementById("historyBox").innerHTML = "";
-      history.forEach(addConversationToHistory);
+      const historyBox = document.getElementById("historyBox");
+      historyBox.innerHTML = "";
+      const initialCount = Math.min(history.length, 5);
+      let allConversationsVisible = initialCount >= history.length;
+
+      for (let i = 0; i < initialCount; i++) {
+        addConversationToHistory(history[i]);
+      }
+
+      if (history.length > 5) {
+        // Adicionamos esta condição
+        const showMoreButton = document.createElement("button");
+        showMoreButton.textContent = "Mostrar mais";
+        showMoreButton.classList.add("show-more-btn");
+
+        showMoreButton.addEventListener("click", () => {
+          if (!allConversationsVisible) {
+            for (let i = initialCount; i < history.length; i++) {
+              addConversationToHistory(history[i]);
+            }
+            showMoreButton.textContent = "Mostrar menos";
+            allConversationsVisible = true;
+          } else {
+            historyBox.innerHTML = "";
+            for (let i = 0; i < initialCount; i++) {
+              addConversationToHistory(history[i]);
+            }
+            showMoreButton.textContent = "Mostrar mais";
+            allConversationsVisible = false;
+
+            if (history.length > initialCount) {
+              historyBox.appendChild(showMoreButton);
+            }
+          }
+        });
+        historyBox.appendChild(showMoreButton);
+      }
     });
 }
 
@@ -322,26 +508,32 @@ function sendMessage() {
   )?.src;
 
   let base64ImageFromFile = null;
-  let base64ImageFromPaste = null;
 
   const sendData = () => {
     const dataToSend = { message: message, conversation_id: currentChatId };
     if (base64ImageFromFile) {
       dataToSend.image = base64ImageFromFile;
-      console.log(
-        "Base64 (Upload) (Início): ",
-        base64ImageFromFile.substring(0, 100) + "..."
-      );
-      console.log("Base64 (Upload) (Fim): ", base64ImageFromFile.slice(-100));
-      console.log("Tamanho Base64 (Upload): ", base64ImageFromFile.length);
+      console.log("Enviando (Upload): ", {
+        message: dataToSend.message,
+        conversation_id: dataToSend.conversation_id,
+        image: dataToSend.image
+          ? dataToSend.image.substring(0, 50) + "..."
+          : null,
+      });
     } else if (base64ImageFromPaste) {
       dataToSend.image = base64ImageFromPaste;
-      console.log(
-        "Base64 (Paste) (Início): ",
-        base64ImageFromPaste.substring(0, 100) + "..."
-      );
-      console.log("Base64 (Paste) (Fim): ", base64ImageFromPaste.slice(-100));
-      console.log("Tamanho Base64 (Paste): ", base64ImageFromPaste.length);
+      console.log("Enviando (Paste): ", {
+        message: dataToSend.message,
+        conversation_id: dataToSend.conversation_id,
+        image: dataToSend.image
+          ? dataToSend.image.substring(0, 50) + "..."
+          : null,
+      });
+    } else {
+      console.log("Enviando (Texto apenas): ", {
+        message: dataToSend.message,
+        conversation_id: dataToSend.conversation_id,
+      });
     }
 
     fetch("/api/chat", {
