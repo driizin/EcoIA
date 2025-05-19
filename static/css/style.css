@@ -483,8 +483,29 @@ body {
   border-radius: 15px;
   background-color: rgb(238, 236, 236);
   position: relative;
-  min-height: 100px;
+  max-height: 100px;
   margin-right: 40px;
+}
+
+.input-area.has-image {
+  max-height: 250px; /* ou outro valor maior conforme o espaço necessário */
+  transition: min-height 0.3s ease;
+}
+
+.input-area.has-image #userInput {
+  padding-top: 100px;
+}
+
+.input-area.has-image button {
+  padding-top: 95px;
+}
+
+.input-area.has-image .image-upload-icon {
+  padding-top: 60px;
+}
+
+.input-area.has-image #imagePreviewContainer {
+  top: -120px;
 }
 
 .input-area #userInput {
@@ -492,7 +513,7 @@ body {
   resize: none; /* Evita redimensionamento manual com o mouse */
   height: 100%;
   overflow-y: auto; /* Scroll vertical automático */
-  padding-top: 70px;
+  padding-top: 50px;
   padding-left: 50px;
   border: none;
   background-color: rgb(238, 236, 236);
@@ -510,7 +531,7 @@ body {
 .input-area button {
   background-color: rgb(238, 236, 236);
   color: rgb(15, 50, 20);
-  padding-top: 70px;
+  padding-top: 55px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -529,10 +550,10 @@ body {
 .input-area .image-upload-icon {
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 48%;
   transform: translateY(-50%);
   font-size: 1.5em;
-   color: rgb(15, 50, 20);
+  color: rgb(15, 50, 20);
   cursor: pointer;
   padding-top: 25px;
   z-index: 1; /* Garante que o ícone esteja acima do input */
@@ -558,18 +579,18 @@ body {
 }
 
 .input-area #imagePreviewContainer div .remove-image-button {
-    position: absolute;
-    top: 5px; /* Ajuste conforme necessário */
-    right: 5px; /* Ajuste conforme necessário */
-    background-color: rgba(255, 255, 255, 0.2);
-    color: rgb(34, 34, 34);
-    width: 15px; /* Ajuste o tamanho do botão */
-    height: 15px; /* Ajuste o tamanho do botão */
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 5px; /* Ajuste conforme necessário */
+  right: 5px; /* Ajuste conforme necessário */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgb(34, 34, 34);
+  width: 15px; /* Ajuste o tamanho do botão */
+  height: 15px; /* Ajuste o tamanho do botão */
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-area #imagePreviewContainer img {
