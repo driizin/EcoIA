@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeMenu();
   loadConversationHistory();
 
+  const inputArea = document.querySelector(".input-area");
   const imageInput = document.getElementById("imageInput");
   const imagePreviewContainer = document.getElementById(
     "imagePreviewContainer"
@@ -94,127 +95,186 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   imageInput.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      displayImagePreview(file);
+  const file = event.target.files[0];
+  const inputArea = document.querySelector(".input-area");
+  const previewContainer = document.getElementById("imagePreviewContainer");
+
+  if (file) {
+    displayImagePreview(file);
+    inputArea.classList.add("has-image"); // Adicionamos esta linha aqui
+  } else {
+    // Se nenhum arquivo for selecionado (por exemplo, se o usuário cancelar),
+    // removemos a classe para garantir que a altura volte ao normal.
+    inputArea.classList.remove("has-image");
+    // Adicionando a lógica para remover o container de prévia
+    if (previewContainer && previewContainer.parentNode === inputArea) {
+      inputArea.removeChild(previewContainer);
     }
-  });
+  }
+});
 
   userInput.addEventListener("paste", (event) => {
-    const items = (event.clipboardData || event.originalEvent.clipboardData)
-      .items;
-    for (const item of items) {
-      if (item.type.startsWith("image/")) {
-        const blob = item.getAsFile();
+  const items = (event.clipboardData || event.originalEvent.clipboardData)
+    .items;
+  let imagePasted = false; // Variável para controlar se uma imagem foi colada
+  const inputArea = document.querySelector(".input-area");
+  const previewContainer = document.getElementById("imagePreviewContainer");
 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const base64 = e.target.result;
+  // Cria o container se ele não existir
+  if (!imagePreviewContainer) {
+    imagePreviewContainer = document.createElement("div");
+    imagePreviewContainer.id = "imagePreviewContainer";
+    inputArea.appendChild(imagePreviewContainer);
+  }
 
-          // Mostra a prévia com botão de exclusão (usando canvas)
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            const imageUrl = canvas.toDataURL("image/png");
+  for (const item of items) {
+    if (item.type.startsWith("image/")) {
+      const blob = item.getAsFile();
 
-            const previewDiv = document.createElement("div");
-            previewDiv.style.position = "relative";
-            previewDiv.style.display = "inline-block";
-            previewDiv.style.marginRight = "5px";
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64 = e.target.result;
 
-            const previewImg = document.createElement("img");
-            previewImg.src = imageUrl;
-            previewImg.alt = "Prévia da imagem";
-            previewImg.style.maxWidth = "70px";
-            previewImg.style.height = "auto";
+        // Mostra a prévia com botão de exclusão (usando canvas)
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          const imageUrl = canvas.toDataURL("image/png");
 
-            const removeButton = document.createElement("button");
-            removeButton.classList.add("remove-image-button");
-            removeButton.innerHTML = `
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                  width="16pt" height="16pt" viewBox="0 0 559.000000 447.000000"
-                  preserveAspectRatio="xMidYMid meet" fill="currentColor">
-              <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
-              fill="currentColor" stroke="none">
-              <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
-              -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
-              -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
-              <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
-              -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
-              -133 8z"/>
-              <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
-              82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
-              -222 -222z"/>
-              </g>
-              </svg>
-            `;
-            removeButton.onclick = function () {
-              previewDiv.remove();
-              base64ImageFromPaste = null; // Limpa corretamente ao remover
-            };
+          const previewDiv = document.createElement("div");
+          previewDiv.style.position = "relative";
+          previewDiv.style.display = "inline-block";
+          previewDiv.style.marginRight = "5px";
 
-            previewDiv.appendChild(previewImg);
-            previewDiv.appendChild(removeButton);
-            imagePreviewContainer.innerHTML = '';
-            imagePreviewContainer.appendChild(previewDiv);
+          const previewImg = document.createElement("img");
+          previewImg.src = imageUrl;
+          previewImg.alt = "Prévia da imagem";
+          previewImg.style.maxWidth = "70px";
+          previewImg.style.height = "auto";
 
-            // Armazene a string base64 para enviar (a do canvas)
-            base64ImageFromPaste = imageUrl;
+          const removeButton = document.createElement("button");
+          removeButton.classList.add("remove-image-button");
+          removeButton.innerHTML = `
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+              width="16pt" height="16pt" viewBox="0 0 559.000000 447.000000"
+              preserveAspectRatio="xMidYMid meet" fill="currentColor">
+            <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
+            fill="currentColor" stroke="none">
+            <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
+            -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
+            -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
+            <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
+            -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
+            -133 8z"/>
+            <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
+            82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
+            -222 -222z"/>
+            </g>
+            </svg>
+          `;
+          removeButton.onclick = function () {
+            previewDiv.remove();
+            base64ImageFromPaste = null; // Limpa corretamente ao remover
+            // Remove o container de prévia se não houver mais imagens
+            if (!imagePreviewContainer.querySelector('img')) {
+              inputArea.removeChild(imagePreviewContainer);
+            }
+            // Se não houver mais imagens, remove a classe 'has-image'
+            if (!inputArea.querySelector('#imagePreviewContainer div')) {
+              inputArea.classList.remove("has-image");
+            }
           };
-          img.src = base64;
-        };
-        reader.readAsDataURL(blob);
 
-        event.preventDefault();
-        break;
-      }
+          previewDiv.appendChild(previewImg);
+          previewDiv.appendChild(removeButton);
+          imagePreviewContainer.innerHTML = "";
+          imagePreviewContainer.appendChild(previewDiv);
+
+          // Armazene a string base64 para enviar (a do canvas)
+          base64ImageFromPaste = imageUrl;
+        };
+        img.src = base64;
+      };
+      reader.readAsDataURL(blob);
+
+      imagePasted = true; // Marcamos que uma imagem foi colada
+      inputArea.classList.add("has-image"); // Adicionamos esta linha aqui
+      event.preventDefault(); // Importante para evitar o comportamento padrão de colar
+      break; // Já encontramos uma imagem, podemos sair do loop
     }
-  });
+  }
+  // Se nada que se pareça com uma imagem foi colado, removemos a classe e o container.
+  if (!imagePasted) {
+    inputArea.classList.remove("has-image");
+    // Adicionando a lógica para remover o container de prévia
+    if (previewContainer && previewContainer.parentNode === inputArea) {
+      inputArea.removeChild(previewContainer);
+    }
+  }
+});
 });
 
 function displayImagePreview(file) {
+  const inputArea = document.querySelector(".input-area");
+  let imagePreviewContainer = document.getElementById("imagePreviewContainer");
+
+  // Cria o container se ele não existir
+  if (!imagePreviewContainer) {
+    imagePreviewContainer = document.createElement("div");
+    imagePreviewContainer.id = "imagePreviewContainer";
+    inputArea.appendChild(imagePreviewContainer);
+  }
+
   const reader = new FileReader();
   reader.onload = (e) => {
     const imageUrl = e.target.result;
     const previewDiv = document.createElement("div");
     previewDiv.style.position = "relative";
     previewDiv.style.display = "inline-block";
-    previewDiv.style.marginRight = "5px"; // Adiciona um pequeno espaço entre as imagens
+    previewDiv.style.marginRight = "5px";
 
     const img = document.createElement("img");
     img.src = imageUrl;
     img.alt = "Prévia da imagem";
-    img.style.maxWidth = "50px"; // Ajuste o tamanho máximo da prévia conforme necessário
+    img.style.maxWidth = "50px";
     img.style.height = "auto";
 
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-image-button");
     removeButton.innerHTML = `
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
         width="16pt" height="16pt" viewBox="0 0 559.000000 447.000000"
         preserveAspectRatio="xMidYMid meet" fill="currentColor">
-    <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
-    fill="currentColor" stroke="none">
-    <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
-    -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
-    -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
-    <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
-    -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
-    -133 8z"/>
-    <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
-    82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
-    -222 -222z"/>
-    </g>
-    </svg>
-`;
+      <g transform="translate(0.000000,447.000000) scale(0.100000,-0.100000)"
+      fill="currentColor" stroke="none">
+      <path d="M2150 3162 c-38 -20 -80 -89 -80 -132 1 -14 6 -37 13 -52 7 -14 269
+      -285 583 -602 499 -502 577 -576 613 -586 98 -26 192 46 191 147 -1 21 -6 48
+      -13 59 -22 40 -1131 1154 -1163 1169 -43 20 -102 19 -144 -3z"/>
+      <path d="M3312 3165 c-18 -8 -133 -114 -254 -235 l-222 -221 107 -107 107
+      -107 221 220 c121 121 227 232 235 247 34 65 6 158 -61 195 -46 26 -86 28
+      -133 8z"/>
+      <path d="M2303 2218 c-232 -234 -243 -250 -228 -319 12 -52 69 -107 120 -115
+      82 -12 103 2 328 226 114 114 207 211 207 216 0 5 -47 55 -103 112 l-102 102
+      -222 -222z"/>
+      </g>
+      </svg>
+    `;
     removeButton.onclick = function () {
       previewDiv.remove();
       document.getElementById("imageInput").value = "";
       base64ImageFromPaste = null;
+      // Remove o container de prévia se não houver mais imagens
+      if (!imagePreviewContainer.querySelector('img')) {
+        inputArea.removeChild(imagePreviewContainer);
+      }
+      // Se não houver mais imagens, remove a classe 'has-image'
+      if (!inputArea.querySelector('#imagePreviewContainer div')) {
+        inputArea.classList.remove("has-image");
+      }
     };
 
     previewDiv.appendChild(img);
@@ -500,89 +560,100 @@ function loadChatForConversation(conversationId) {
 
 // Função de mandar mensagem como usuário
 function sendMessage() {
-  const input = document.getElementById("userInput");
-  const message = input.value.trim();
-  const imageFile = document.getElementById("imageInput").files[0];
-  const imagePreviewSrc = document.querySelector(
-    "#imagePreviewContainer img"
-  )?.src;
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    const imageFile = document.getElementById("imageInput").files[0];
+    const imagePreviewSrc = document.querySelector(
+        "#imagePreviewContainer img"
+    )?.src;
 
-  let base64ImageFromFile = null;
+    let base64ImageFromFile = null;
 
-  const sendData = () => {
-    const dataToSend = { message: message, conversation_id: currentChatId };
-    if (base64ImageFromFile) {
-      dataToSend.image = base64ImageFromFile;
-      console.log("Enviando (Upload): ", {
-        message: dataToSend.message,
-        conversation_id: dataToSend.conversation_id,
-        image: dataToSend.image
-          ? dataToSend.image.substring(0, 50) + "..."
-          : null,
-      });
-    } else if (base64ImageFromPaste) {
-      dataToSend.image = base64ImageFromPaste;
-      console.log("Enviando (Paste): ", {
-        message: dataToSend.message,
-        conversation_id: dataToSend.conversation_id,
-        image: dataToSend.image
-          ? dataToSend.image.substring(0, 50) + "..."
-          : null,
-      });
-    } else {
-      console.log("Enviando (Texto apenas): ", {
-        message: dataToSend.message,
-        conversation_id: dataToSend.conversation_id,
-      });
+    const sendData = () => {
+        const dataToSend = { message: message, conversation_id: currentChatId };
+        if (base64ImageFromFile) {
+            dataToSend.image = base64ImageFromFile;
+            console.log("Enviando (Upload): ", {
+                message: dataToSend.message,
+                conversation_id: dataToSend.conversation_id,
+                image: dataToSend.image
+                    ? dataToSend.image.substring(0, 50) + "..."
+                    : null,
+            });
+        } else if (base64ImageFromPaste) {
+            dataToSend.image = base64ImageFromPaste;
+            console.log("Enviando (Paste): ", {
+                message: dataToSend.message,
+                conversation_id: dataToSend.conversation_id,
+                image: dataToSend.image
+                    ? dataToSend.image.substring(0, 50) + "..."
+                    : null,
+            });
+        } else {
+            console.log("Enviando (Texto apenas): ", {
+                message: dataToSend.message,
+                conversation_id: dataToSend.conversation_id,
+            });
+        }
+
+        fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dataToSend),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                appendMessage(data.response, "bot_message", data.bot_message_id);
+                if (!currentChatId && data.conversation_id) {
+                    currentChatId = data.conversation_id;
+                    loadConversationHistory();
+                }
+            })
+            .finally(() => { // Adicionado o bloco finally para garantir a remoção da classe
+                const inputArea = document.querySelector(".input-area");
+                inputArea.classList.remove("has-image");
+            });
+    };
+
+    if (message === "" && !imageFile && !imagePreviewSrc) return;
+
+    if (message !== "") {
+        appendMessage(message, "user_message");
     }
 
-    fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dataToSend),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        appendMessage(data.response, "bot_message");
-        if (!currentChatId && data.conversation_id) {
-          currentChatId = data.conversation_id;
-          loadConversationHistory();
-        }
-      });
-  };
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            base64ImageFromFile = reader.result;
+            appendMessageWithImage(
+                "", // O texto da mensagem pode ser vazio se for apenas imagem
+                base64ImageFromFile,
+                "user_image"
+            );
+            document.getElementById("imageInput").value = "";
+            sendData();
+        };
+        reader.readAsDataURL(imageFile);
+    } else if (imagePreviewSrc && imagePreviewSrc.startsWith("data:image/")) {
+        appendMessageWithImage(
+            "", // O texto da mensagem pode ser vazio se for apenas imagem
+            base64ImageFromPaste,
+            "user_image"
+        );
+        document.getElementById("imageInput").value = "";
+        sendData();
+    } else {
+        sendData();
+    }
 
-  if (message === "" && !imageFile && !imagePreviewSrc) return;
-
-  if (message !== "") {
-    appendMessage(message, "user_message");
-  }
-
-  if (imageFile) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      base64ImageFromFile = reader.result;
-      appendImageMessage(
-        `<img src="${base64ImageFromFile}" alt="Imagem enviada" class="message-image">`,
-        "user_image"
-      );
-      document.getElementById("imageInput").value = "";
-      sendData();
-    };
-    reader.readAsDataURL(imageFile);
-  } else if (imagePreviewSrc && imagePreviewSrc.startsWith("data:image/")) {
-    appendImageMessage(
-      `<img src="${base64ImageFromPaste}" alt="Imagem colada" class="message-image">`,
-      "user_image"
-    );
-    document.getElementById("imageInput").value = "";
-    sendData();
-  } else {
-    sendData();
-  }
-
-  // Sempre limpa os campos
-  input.value = "";
-  document.getElementById("imagePreviewContainer").innerHTML = "";
+    // Sempre limpa os campos
+    input.value = "";
+    const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+    if (imagePreviewContainer) {
+        imagePreviewContainer.innerHTML = "";
+    }
+    const inputArea = document.querySelector(".input-area");
+    inputArea.classList.remove("has-image"); // Garante que a classe seja removida aqui também
 }
 
 // Função de exibir imagem no chat
