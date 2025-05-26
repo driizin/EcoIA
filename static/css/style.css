@@ -600,6 +600,54 @@ body {
   object-fit: contain;
 }
 
+.input-area.drag-over {
+  border: 2px dashed rgb(35, 91, 37);
+  background-color: rgba(15, 50, 20, 0.2);
+}
+
+.input-area.drag-over #userInput,
+.input-area.drag-over button {
+  background-color: rgba(15, 50, 20, 0);
+}
+
+/* Overlay visível apenas durante drag-over */
+.input-area .drag-overlay {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.input-area.drag-over .drag-overlay {
+  display: flex;
+}
+
+/* Ícone e texto centralizados */
+.drag-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(15, 50, 20);
+  font-weight: bold;
+  font-size: 1em;
+  gap: 8px;
+  background-color: none;
+  padding: 12px 18px;
+}
+
+.drag-icon svg {
+  width: 48px;
+  height: 48px;
+  fill: rgb(15, 50, 20);
+}
+
 /* Scrollbars */
 .chat-area .chat-box::-webkit-scrollbar,
 .history-area::-webkit-scrollbar,
