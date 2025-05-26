@@ -42,12 +42,13 @@ E selecione esse Python 3.12.0('EcoIA':venv)
 ![image](https://github.com/user-attachments/assets/39d29d39-85f3-4637-96a3-46f4fcadc654)<br>
 Use esses códigos em sequência no terminal:<br>
 pip install flask <br>
-pip install chatterbot <br>
 pip install google.generativeai <br>
 pip install markdown<br>
-pip install bleach<br>
+pip install bleach <br>
 pip install mysql <br>
 pip install mysql-connector-python <br>
+pip install sqlalchemy <br>
+pip install spacy <br>
 python -m spacy download pt_core_news_sm <br>
 python -m spacy download en_core_web_sm
 9. Para funcionar, precisa criar o banco de dados. Então com o Xampp aberto<br>
