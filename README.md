@@ -48,6 +48,7 @@ pip install bleach <br>
 pip install mysql <br>
 pip install mysql-connector-python <br>
 pip install sqlalchemy <br>
+pip install logging <br>
 pip install spacy <br>
 python -m spacy download pt_core_news_sm <br>
 python -m spacy download en_core_web_sm
