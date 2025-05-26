@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="icon" href="../static/imagem/logo.png" type="image/x-icon" />
+    <link rel="icon" href="../static/assets/img/icone.png" type="image/x-icon" />
     <title>EcoIA</title>
   </head>
   <body>
     <div class="container">
       <header class="header-area">
-        <img id="ecoia" src="../static/imagem/logo.png" alt="EcoIA" />
+        <img id="ecoia" src="../static/assets/img/logo.png" alt="EcoIA" />
       </header>
       <aside id="historyArea" class="history-area closed">
         <div class="history-header">
-          <button
-            id="toggleMenuBtn">&#9776;
-          </button>
+          <button id="toggleMenuBtn">&#9776;</button>
           <button class="new-convo-btn" onclick="startNewConversation()">
             <div class="new-convo-icon">
               <span style="font-size: 2em; margin-right: 5px; color: #333"
@@ -43,7 +41,11 @@
             style="display: none"
           />
           <div id="imagePreviewContainer"></div>
-          <textarea id="userInput" placeholder="Peça ao EcoIA" rows="3"></textarea>
+          <textarea
+            id="userInput"
+            placeholder="Peça ao EcoIA"
+            rows="3"
+          ></textarea>
           <button onclick="sendMessage()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +86,6 @@
         </div>
       </div>
     </div>
-    <script src="../static/script/scripts.js"></script>
+    <script src="../static/js/script.js"></script>
   </body>
 </html>
