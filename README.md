@@ -69,11 +69,10 @@ e vai funcionar olhando no Output, no lado inferior mostrando antes com uns sím
 ![image](https://github.com/user-attachments/assets/890ec6fd-e582-4e34-b196-7befa2c661d7)<br>
 Vai no Pesquisar projetos do Google Cloud e selecione o Gemini API:
 ![image](https://github.com/user-attachments/assets/5e34cc08-1935-427e-9c6c-872003091238)<br>
-<br>
 A chave de API aparecerá em baixo com opção de copiar.<br>
-Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br><br>
-Com a chave copiada, pesquise no Windows por Variáveis de Ambiente
-![image](https://github.com/user-attachments/assets/04f78028-5b99-4f53-90eb-c8c3cc9470c0)
+<br>Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br><br>
+Com a chave copiada, pesquise no Windows por Variáveis de Ambiente<br>
+ ![image](https://github.com/user-attachments/assets/04f78028-5b99-4f53-90eb-c8c3cc9470c0)<br>
 Abra ela e depois de abrir, selecione Variáveis de Ambiente<br>
 ![image](https://github.com/user-attachments/assets/193d2545-f4ad-421e-9823-77ab66222ea5)<br>
 Nas Variáveis de usuário para (user) e Variáveis do sistema, aperte no botão Novo
