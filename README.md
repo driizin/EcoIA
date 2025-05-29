@@ -27,13 +27,13 @@ Certifique-se de ter os seguintes softwares instalados antes de iniciar:
 
 1.  **Baixe e Abra o Projeto:**
     * Clone ou baixe o repositório do GitHub para o seu computador.
-    * Caso baixe, recomendamos renomear a pasta para `chatbot`.
+    * Caso **BAIXE**, recomendamos renomear a pasta para `chatbot`.
     * Para abrir o projeto no VS Code, selecione a pasta `chatbot` e clique com o botão direito. Vá em "Mostrar mais opções" e depois em "Abrir com Code".<br>
         ![Image of folder selection in VS Code](https://github.com/user-attachments/assets/637e19b7-95ef-4f4e-9f2f-cf1bfa7040f7)<br>
         ![Image of "Open with Code" option](https://github.com/user-attachments/assets/47960288-5148-40be-97ce-df01809d1980)<br>
     * Ao abrir, confirme a confiança nos autores da pasta, se solicitado:<br>
         ![Image of trust prompt in VS Code](https://github.com/user-attachments/assets/bc4daeb9-b84f-4ada-837a-51215a025efd)<br><br>
-    * Caso clone, crie uma pasta para o nome `chatbot` para depois fazer os processos ensinados anteriormente de "Abrir com Code".<br>
+    * Caso **CLONE**, crie uma pasta para o nome `chatbot` para depois fazer os processos ensinados anteriormente de "Abrir com Code".<br>
     *  No terminal, que tem a seguir um tutorial de como abrir, com ele aberto cole o seguinte código antes de fazer qualquer coisa:
          ```bash
          git clone https://github.com/driizin/EcoIA.git
