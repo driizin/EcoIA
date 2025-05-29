@@ -134,5 +134,13 @@ Certifique-se de ter os seguintes softwares instalados antes de iniciar:
         ![Image of chatbot running on localhost](https://github.com/user-attachments/assets/a095dad3-d04c-4729-ba70-02030db6ede7)<br>
     * Abra seu navegador e acesse esse endereço.
 
+### Demonstração do Chatbot
+
+Assista a uma breve demonstração do EcoIA em ação:
+
+![Demonstração do Chatbot EcoIA](https://github.com/driizin/EcoIA/blob/main/static/assets/gif/chatbot.gif?raw=true)
+
+---
+
 ### 11. Aproveite e teste o nosso chatbot EcoIA!!!<br>
 <br>![user-campaign-reward-desc_15-20190620_20054103](https://github.com/user-attachments/assets/39459ec7-5425-41df-9464-6584424d2a4e)
