@@ -121,7 +121,7 @@ Certifique-se de ter os seguintes softwares instalados antes de iniciar:
 2.  **Acesse o Chatbot no Navegador:**
     * Após iniciar o servidor, o terminal indicará o endereço local onde o chatbot está rodando. Geralmente, será:
         ```
-        [http://127.0.0.1:5000]
+        [http://127.0.0.1:5000](http://127.0.0.1:5000)
         ```
         ![image](https://github.com/user-attachments/assets/a095dad3-d04c-4729-ba70-02030db6ede7)<br>
     * Abra seu navegador e acesse esse endereço.
