@@ -40,6 +40,11 @@ Certifique-se de ter os seguintes softwares instalados antes de iniciar:
          ```
          ![image](https://github.com/user-attachments/assets/fb5c95e6-b6ff-4d6b-b434-1421a9de540d)
 
+      * Logo após, para não ocorrer nenhum erro, transfira todos os arquivos criados pela pasta EcoIA para a pasta chatbot e, em seguida, exclua a pasta EcoIA:<br>
+        ![image](https://github.com/user-attachments/assets/a9b933d7-f44d-400b-a3cf-8125381d2fba)<br>
+        ![image](https://github.com/user-attachments/assets/10d04d04-c1d8-423f-94f6-b1270a237626)<br>
+        ![image](https://github.com/user-attachments/assets/fcfa84f1-f9cf-43fa-a448-15c522a43a65)<br>
+
 
 2.  **Abra o Terminal no VS Code:**
     * No VS Code, abra o arquivo `main.py` no lado esquerdo.<br>
