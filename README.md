@@ -39,7 +39,7 @@ Caso não estiver, aperte nele e vai aparecer as versões do python instalados
 ![image](https://github.com/user-attachments/assets/e6c3e9ae-e026-47d5-a5c5-4f691a7ccefd)<br>
 E selecione esse Python 3.12.0('EcoIA':venv)
 7. E para reconhecer essas bibliotecas do main.py:
-![image](https://github.com/user-attachments/assets/39d29d39-85f3-4637-96a3-46f4fcadc654)<br>
+![image](https://github.com/user-attachments/assets/0ea6e714-92e9-438d-a025-d6bfe6448e3b)<br>
 Use esses códigos em sequência no terminal:<br>
 pip install flask <br>
 pip install google.generativeai <br>
@@ -69,8 +69,9 @@ e vai funcionar olhando no Output, no lado inferior mostrando antes com uns sím
 ![image](https://github.com/user-attachments/assets/890ec6fd-e582-4e34-b196-7befa2c661d7)<br>
 Vai no Pesquisar projetos do Google Cloud e selecione o Gemini API:
 ![image](https://github.com/user-attachments/assets/5e34cc08-1935-427e-9c6c-872003091238)<br>
+<br>
 A chave de API aparecerá em baixo com opção de copiar.<br>
-Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br>
+Obs.: ⚠️ TENHA MUITO CUIDADO COM ESSA CHAVE POIS SE ALGUÉM OBTIVER ELA, TEM ACESSO A SUA CONTA GOOGLE, PODENDO ACESSAR NOS SEUS ASSUNTOS CONFIDENCIAIS E PODENDO ROUBÁ-LAS. ⚠️<br><br>
 Com a chave copiada, pesquise no Windows por Variáveis de Ambiente
 ![image](https://github.com/user-attachments/assets/04f78028-5b99-4f53-90eb-c8c3cc9470c0)
 Abra ela e depois de abrir, selecione Variáveis de Ambiente<br>
@@ -84,7 +85,7 @@ Logo após reinicie o computador para salvar essas variáveis.
 ![image](https://github.com/user-attachments/assets/1142e0ab-cdba-470d-b59b-62154bd3d1e8)<br>
 e dará este link para acessar: http://127.0.0.1:5000
 ![image](https://github.com/user-attachments/assets/a095dad3-d04c-4729-ba70-02030db6ede7)
-11. Aproveite e teste o nosso chatbot EcoIA e também veja o arquivo intrucoes.txt para nos ajudar a adicionar conteúdos sobre ecologia.<br>
+11. Aproveite e teste o nosso chatbot EcoIA!!!<br>
 <br><br><br>![user-campaign-reward-desc_15-20190620_20054103](https://github.com/user-attachments/assets/39459ec7-5425-41df-9464-6584424d2a4e)
 
    
