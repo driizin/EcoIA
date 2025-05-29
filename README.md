@@ -2,9 +2,9 @@
 Olá! Este é um projeto de um chatbot da ecologia por nome EcoIA que foi desenvolvido pelos alunos do IF Baiano - Campus Guanambi.<br>
 São eles: 
 
-|                                                                                                |                                                                                                |                                                                                                |
+| Adriel Lima                                                                                   | Luiz Eduardo Lopes                                                                                 | Vinícius Morais                                                                                 |
 | :---------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
-| <a href="https://www.instagram.com/wrttdriel/"><img src="https://github.com/user-attachments/assets/45e6c560-ff1b-4bd7-9ea0-2ec6b8cfc48a" width="150" height="150"></a><br>Adriel Lima | <a href="https://www.instagram.com/luyzx_05/"><img src="https://github.com/user-attachments/assets/2492ec2f-3dd4-4b91-aede-0c1dbc602695" width="150" height="150"></a><br>Luiz Eduardo Lopes | <a href="https://www.instagram.com/wtfvinaa/"><img src="https://github.com/user-attachments/assets/ed14cfb8-6721-43e9-a474-da1c94e16ee5" width="150" height="150"></a><br>Vinícius Morais |
+| <a href="https://www.instagram.com/wrttdriel/"><img src="https://github.com/user-attachments/assets/45e6c560-ff1b-4bd7-9ea0-2ec6b8cfc48a" width="150" height="150"></a> | <a href="https://www.instagram.com/luyzx_05/"><img src="https://github.com/user-attachments/assets/2492ec2f-3dd4-4b91-aede-0c1dbc602695" width="150" height="150"></a> | <a href="https://www.instagram.com/wtfvinaa/"><img src="https://github.com/user-attachments/assets/ed14cfb8-6721-43e9-a474-da1c94e16ee5" width="150" height="150"></a> |
 
 ---
 
