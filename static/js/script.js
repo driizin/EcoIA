@@ -149,14 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // NOVO: Listener para o evento de colar na área de input
   userInput.addEventListener("paste", handlePaste);
+}); 
 
-  // Removido o bloco de código complexo do paste que estava aqui.
-  // A lógica foi movida para a função handlePaste e displayImagePreview.
-}); // <-- Este é o fechamento correto do DOMContentLoaded
-
-// Função para lidar com o evento de colar (NOVA FUNÇÃO OU REESTRUTURADA)
+// Função para lidar com o evento de colar 
 function handlePaste(event) {
   const items = (event.clipboardData || event.originalEvent.clipboardData)
     .items;
@@ -170,12 +166,12 @@ function handlePaste(event) {
       reader.onload = (e) => {
         base64ImageFromPaste = e.target.result; // Armazena a imagem em base64
         imageFile = null;
-        displayImagePreview(base64ImageFromPaste); // Exibe o preview usando a função unificada
+        displayImagePreview(base64ImageFromPaste); 
       };
       reader.readAsDataURL(blob);
       imageFound = true;
-      event.preventDefault(); // Importante para evitar o comportamento padrão de colar
-      break; // Já encontramos uma imagem, podemos sair do loop
+      event.preventDefault(); 
+      break; 
     }
   }
   if (!imageFound) {
@@ -183,7 +179,7 @@ function handlePaste(event) {
   }
 }
 
-// Função para exibir o preview da imagem (UNIFICADA para upload e paste)
+// Função para exibir o preview da imagem 
 function displayImagePreview(imageUrl) {
   const imagePreviewContainer = document.getElementById(
     "imagePreviewContainer"
@@ -191,11 +187,11 @@ function displayImagePreview(imageUrl) {
   const inputArea = document.querySelector(".input-area");
 
   // Limpa qualquer conteúdo anterior
-  imagePreviewContainer.style.display = ""; // ADICIONADO
+  imagePreviewContainer.style.display = ""; 
   imagePreviewContainer.innerHTML = "";
 
   const previewDiv = document.createElement("div");
-  previewDiv.classList.add("pasted-image-preview-wrapper"); // Adiciona uma classe para estilização
+  previewDiv.classList.add("pasted-image-preview-wrapper"); 
   previewDiv.style.position = "relative";
   previewDiv.style.display = "inline-block";
   previewDiv.style.marginRight = "5px";
@@ -234,7 +230,7 @@ function displayImagePreview(imageUrl) {
   inputArea.classList.add("has-image"); // Adiciona a classe para ajustar o layout
 }
 
-// Função para limpar o preview da imagem (UNIFICADA)
+// Função para limpar o preview da imagem 
 function clearImagePreview() {
   base64ImageFromPaste = null;
   document.getElementById("imageInput").value = ""; // Limpa o input de arquivo
@@ -243,7 +239,7 @@ function clearImagePreview() {
   );
   if (imagePreviewContainer) {
     imagePreviewContainer.innerHTML = ""; // Limpa o conteúdo do container
-    imagePreviewContainer.style.display = "none"; // ADICIONADO: Esconde o container
+    imagePreviewContainer.style.display = "none"; // Esconde o container
   }
   const inputArea = document.querySelector(".input-area");
   inputArea.classList.remove("has-image"); // Remove a classe para ajustar o layout
@@ -411,7 +407,7 @@ function showRenameModal(id, currentTitle) {
       modal.style.display = "none";
       confirmButton.onclick = null;
     } else {
-      // Substituído alert por uma mensagem no console ou modal customizado se preferir
+      // Mensagem no console ou modal customizado se preferir
       console.warn("Por favor, insira um novo título.");
     }
   };
@@ -531,7 +527,7 @@ function loadChatForConversation(conversationId) {
     });
 }
 
-// Função de mandar mensagem como usuário (REESTRUTURADA)
+// Função de mandar mensagem como usuário 
 async function sendMessage() {
   const input = document.getElementById("userInput");
   const message = input.value.trim();
@@ -579,7 +575,7 @@ async function sendMessage() {
   clearImagePreview();
 }
 
-// Função auxiliar para enviar dados para a API (REESTRUTURADA)
+// Função auxiliar para enviar dados para a API 
 async function sendData(message, imageData) {
   const dataToSend = { message: message, conversation_id: currentChatId };
   if (imageData) {
@@ -630,7 +626,7 @@ function appendMessage(text, className) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Envio com Enter (mantido)
+// Envio com Enter 
 document.getElementById("userInput").addEventListener("keyup", (e) => {
   if (e.key === "Enter") sendMessage();
 });
