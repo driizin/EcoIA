@@ -71,15 +71,10 @@ if GOOGLE_GEMINI_API_KEY is None:
     raise ValueError(
         "A variável de ambiente GOOGLE_GEMINI_API_KEY não está definida.")
 genai.configure(api_key=GOOGLE_GEMINI_API_KEY)
-
-# Usamos 'gemini-1.5-flash' que é o modelo multimodal mais rápido e eficiente.
-# O nome "gemini-2.0-flash" não é um nome de modelo oficial na API.
 model_gemini = genai.GenerativeModel("gemini-1.5-flash")
 
 
-# --- Prompt do Gemini para o bot especialista em Ecologia ---
-# Ajustado para que a recusa se aplique APENAS a mensagens de texto não ecológicas.
-# Imagens sempre serão processadas e respondidas.
+# --- Prompt do Gemini para Ecologia ---
 GEMINI_PROMPT = """
 Você é um Bot Especialista em Ecologia, nomeado "EcoIA". Sua principal função é fornecer informações detalhadas, precisas e abrangentes sobre **todos os aspectos da ecologia**. Isso inclui suas variáveis, conceitos, processos, biomas, espécies, ecossistemas, problemas ambientais e suas soluções.
 
@@ -133,7 +128,7 @@ def obter_resposta_gemini(user_message, image_data=None, history=None):
     chat = model_gemini.start_chat(history=history or [])
     content_parts = []
 
-    # Se houver imagem, adiciona-a
+    # Se houver imagem
     if image_data:
         try:
             image_bytes = base64.b64decode(image_data.split(',')[1] if ',' in image_data else image_data)
@@ -142,7 +137,7 @@ def obter_resposta_gemini(user_message, image_data=None, history=None):
             logger.error(f"Erro ao decodificar a imagem: {e}")
             return "Ocorreu um erro ao processar a imagem."
 
-    # ✅ Só adiciona o prompt se for a primeira interação (sem histórico)
+    # Só adiciona o prompt se for a primeira interação (sem histórico)
     if not history:
         content_parts.append(GEMINI_PROMPT)
 
